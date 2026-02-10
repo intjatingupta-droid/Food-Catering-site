@@ -8,8 +8,8 @@ import { useRef } from "react";
 import dishButterChicken from "@/assets/dish-butter-chicken.jpg";
 import dishBiryani from "@/assets/dish-biryani.jpg";
 import dishPaneerTikka from "@/assets/dish-paneer-tikka.jpg";
-import bowlMain from "@/assets/hero-main.png";
-import pokeBowl from "@/assets/minibowl.png";
+import bowlMain from "@/assets/bowl-new-project.png";
+import pokeBowl from "@/assets/menu-item-4.png";
 import veganPlate from "@/assets/minibowl2.png";
 import premiumDish from "@/assets/minibowl3.png";
 
@@ -159,13 +159,17 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <Button variant="hero" size="lg" className="w-full sm:w-auto">
-                Book Your Event
-                <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+              <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
+                <a href="#services">
+                  Book Your Event
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                </a>
               </Button>
-              <Button variant="outline" size="lg" className="gap-2 w-full sm:w-auto">
-                <Phone className="w-4 h-4 md:w-5 md:h-5" />
-                +91 98765 43210
+              <Button variant="outline" size="lg" className="gap-2 w-full sm:w-auto" asChild>
+                <a href="#contact">
+                  <Phone className="w-4 h-4 md:w-5 md:h-5" />
+                  +91 98765 43210
+                </a>
               </Button>
             </motion.div>
 

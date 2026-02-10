@@ -97,7 +97,7 @@ const ServicesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <section className="relative min-h-screen py-12 lg:py-16 bg-gradient-to-br from-gray-50 via-orange-50/30 to-red-50/30 overflow-hidden">
+    <section id="services" className="relative min-h-screen py-12 lg:py-16 bg-gradient-to-br from-gray-50 via-orange-50/30 to-red-50/30 overflow-hidden">
       
       {/* Decorative Elements */}
       <DecorativeCircle className="w-96 h-96 -top-48 -right-48 opacity-40" />

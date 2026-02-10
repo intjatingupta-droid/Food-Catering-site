@@ -74,7 +74,7 @@ const TestimonialsSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <section className="relative min-h-screen py-24 lg:py-32 bg-gradient-to-br from-white via-orange-50/40 to-red-50/40 overflow-hidden">
+    <section id="testimonials" className="relative min-h-screen py-24 lg:py-32 bg-gradient-to-br from-white via-orange-50/40 to-red-50/40 overflow-hidden">
       
       {/* Decorative Circles */}
       <DecorativeCircle className="w-[500px] h-[500px] -top-64 -left-64 opacity-40" />
