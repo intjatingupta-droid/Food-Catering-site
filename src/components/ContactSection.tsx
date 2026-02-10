@@ -1,15 +1,52 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
-import { FloatingTurmeric, FloatingMint, DecorativeRing } from "@/components/FloatingElements";
+import { DecorativeRing } from "@/components/FloatingElements";
+
+// Import PNG elements
+import tomatoPng from "@/assets/vibrant-tomato-slices-with-juicy-red-interior-hovering-in-the-air-png.png";
+import bellPepperPng from "@/assets/sliced-green-bell-pepper-vegetable-on-transparent-background-free-png.png";
+import carrotPng from "@/assets/pngtree-single-fresh-orange-carrot-vegetable-png-image_14022325-removebg-preview.png";
+import veggiePng from "@/assets/image-removebg-preview.png";
 
 const ContactSection = () => {
   return (
     <section id="contact" className="relative py-20 lg:py-32 bg-muted overflow-hidden">
-      {/* Floating Elements */}
-      <FloatingTurmeric className="top-24 right-12 z-10" size="lg" delay={0} />
-      <FloatingMint className="bottom-32 left-8 z-10" size="md" delay={1} />
       <DecorativeRing className="w-80 h-80 -top-40 -right-40" />
+
+      {/* Floating PNG Elements - spread across entire page */}
+      <motion.div
+        className="absolute top-[8%] right-[8%] w-14 h-14 md:w-18 md:h-18 z-5 opacity-15"
+        animate={{ 
+          y: [0, -18, 0],
+          rotate: [0, 20, -20, 0]
+        }}
+        transition={{ duration: 6.5, repeat: Infinity }}
+      >
+        <img src={tomatoPng} alt="" className="w-full h-full object-contain drop-shadow-lg" />
+      </motion.div>
+
+      <motion.div
+        className="absolute top-[25%] left-[5%] w-12 h-12 md:w-16 md:h-16 z-5 opacity-18"
+        animate={{ 
+          y: [0, 16, 0],
+          rotate: [0, -18, 18, 0]
+        }}
+        transition={{ duration: 7, repeat: Infinity, delay: 1 }}
+      >
+        <img src={bellPepperPng} alt="" className="w-full h-full object-contain drop-shadow-lg" />
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-[8%] right-[5%] w-16 h-16 md:w-20 md:h-20 z-5 opacity-16"
+        animate={{ 
+          y: [0, -22, 0],
+          rotate: [0, 25, -25, 0]
+        }}
+        transition={{ duration: 8, repeat: Infinity, delay: 0.5 }}
+      >
+        <img src={carrotPng} alt="" className="w-full h-full object-contain drop-shadow-lg" />
+      </motion.div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">

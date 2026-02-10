@@ -6,68 +6,73 @@
 
 @layer base {
   :root {
-    /* Premium Catering Light Theme - Warm Food Colors */
-    --background: 35 30% 97%;
-    --foreground: 20 25% 15%;
+    /* Appetizing Red-Orange Food Theme - Stimulates Hunger */
+    --background: 15 100% 98%;
+    --foreground: 10 40% 10%;
 
-    --card: 35 25% 98%;
-    --card-foreground: 20 25% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 10 40% 10%;
 
-    --popover: 35 25% 98%;
-    --popover-foreground: 20 25% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 10 40% 10%;
 
-    /* Warm Orange - Primary Brand */
-    --primary: 25 95% 53%;
+    /* Vibrant Red-Orange - Primary (Appetite Stimulating) */
+    --primary: 10 90% 58%;
     --primary-foreground: 0 0% 100%;
 
-    /* Deep Red - Secondary */
-    --secondary: 0 72% 50%;
+    /* Deep Red - Secondary (Bold & Energetic) */
+    --secondary: 0 80% 55%;
     --secondary-foreground: 0 0% 100%;
 
-    /* Cream/Beige Muted */
-    --muted: 35 30% 92%;
-    --muted-foreground: 20 15% 45%;
+    /* Warm Peach Muted */
+    --muted: 20 70% 95%;
+    --muted-foreground: 15 25% 40%;
 
-    /* Golden Accent */
-    --accent: 40 90% 50%;
-    --accent-foreground: 20 25% 15%;
+    /* Bright Orange Accent */
+    --accent: 30 100% 60%;
+    --accent-foreground: 10 40% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 30 20% 88%;
-    --input: 30 20% 88%;
-    --ring: 25 95% 53%;
+    --border: 15 50% 92%;
+    --input: 15 50% 92%;
+    --ring: 10 90% 58%;
 
     --radius: 0.75rem;
 
-    /* Custom Food Theme Variables */
-    --saffron: 40 100% 50%;
-    --turmeric: 45 85% 55%;
-    --cinnamon: 15 60% 40%;
-    --paprika: 10 80% 55%;
-    --curry: 35 75% 50%;
-    --cream: 40 40% 95%;
+    /* Appetizing Food Colors */
+    --tomato-red: 5 85% 60%;
+    --chili-red: 0 90% 55%;
+    --paprika: 15 85% 58%;
+    --tangerine: 25 100% 60%;
+    --saffron: 40 100% 60%;
+    --coral: 10 80% 65%;
+    --peach: 20 90% 75%;
+    --cream: 30 60% 97%;
 
-    /* Gradients */
-    --gradient-warm: linear-gradient(135deg, hsl(25 95% 53%) 0%, hsl(40 90% 50%) 50%, hsl(0 72% 50%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsla(20, 25%, 15%, 0.85) 0%, hsla(20, 25%, 15%, 0.6) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(35 25% 98%) 0%, hsl(35 30% 95%) 100%);
-    --gradient-cta: linear-gradient(135deg, hsl(25 95% 53%) 0%, hsl(0 72% 55%) 100%);
+    /* Bold Red-Orange Gradients */
+    --gradient-warm: linear-gradient(135deg, hsl(0 80% 55%) 0%, hsl(10 90% 58%) 40%, hsl(30 100% 60%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsla(10, 90%, 58%, 0.12) 0%, hsla(30, 100%, 60%, 0.05) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(20 70% 98%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(0 80% 55%) 0%, hsl(10 90% 58%) 50%, hsl(25 95% 60%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(30 100% 60%) 0%, hsl(40 100% 60%) 100%);
+    --gradient-spicy: linear-gradient(135deg, hsl(0 90% 55%) 0%, hsl(15 85% 58%) 100%);
 
-    /* Shadows */
-    --shadow-warm: 0 10px 40px -10px hsla(25, 95%, 53%, 0.3);
-    --shadow-elegant: 0 25px 50px -12px hsla(20, 25%, 15%, 0.15);
-    --shadow-card: 0 4px 20px -4px hsla(20, 25%, 15%, 0.1);
+    /* Warm Appetizing Shadows */
+    --shadow-warm: 0 12px 45px -12px hsla(10, 90%, 58%, 0.45);
+    --shadow-elegant: 0 25px 50px -12px hsla(0, 80%, 55%, 0.25);
+    --shadow-card: 0 6px 25px -6px hsla(10, 90%, 58%, 0.2);
+    --shadow-glow: 0 0 30px hsla(10, 90%, 58%, 0.3);
 
-    --sidebar-background: 35 25% 98%;
-    --sidebar-foreground: 20 25% 15%;
-    --sidebar-primary: 25 95% 53%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 10 40% 10%;
+    --sidebar-primary: 10 90% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 35 30% 92%;
-    --sidebar-accent-foreground: 20 25% 15%;
-    --sidebar-border: 30 20% 88%;
-    --sidebar-ring: 25 95% 53%;
+    --sidebar-accent: 20 70% 95%;
+    --sidebar-accent-foreground: 10 40% 10%;
+    --sidebar-border: 15 50% 92%;
+    --sidebar-ring: 10 90% 58%;
   }
 }
 
@@ -78,11 +83,14 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   h1, h2, h3, h4, h5, h6 {

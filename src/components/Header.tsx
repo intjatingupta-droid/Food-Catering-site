@@ -1,8 +1,15 @@
 import { Phone, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import { useState } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   const navLinks = [
     { name: "Home", href: "#home", active: true },
@@ -14,37 +21,15 @@ const Header = () => {
   ];
 
   return (
-    <header className="w-full z-50">
-      {/* Top Bar */}
-      <div className="bg-primary">
-        <div className="container mx-auto px-4 py-2 flex flex-wrap justify-between items-center">
-          <div className="flex items-center gap-4 text-primary-foreground text-sm font-body">
-            <a href="tel:+919876543210" className="flex items-center gap-1 hover:opacity-80 transition-opacity">
-              <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">+91 98765 43210</span>
-            </a>
-            <span className="hidden md:inline">|</span>
-            <a href="tel:+919876543211" className="hidden md:flex items-center gap-1 hover:opacity-80 transition-opacity">
-              <Phone className="w-4 h-4" />
-              <span>+91 98765 43211</span>
-            </a>
-          </div>
-          <div className="flex items-center gap-3">
-            {[Facebook, Instagram, Linkedin, Twitter].map((Icon, index) => (
-              <a
-                key={index}
-                href="#"
-                className="w-8 h-8 rounded-full bg-primary-foreground/20 flex items-center justify-center hover:bg-primary-foreground/30 transition-colors"
-              >
-                <Icon className="w-4 h-4 text-primary-foreground" />
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
+    <header className="fixed top-0 left-0 right-0 w-full z-50">
       {/* Main Navigation */}
-      <nav className="bg-card shadow-card sticky top-0 z-50">
+      <nav className="bg-card/95 backdrop-blur-sm shadow-card">
+        {/* Scroll Progress Bar */}
+        <motion.div
+          className="absolute top-0 left-0 right-0 h-1 bg-gradient-warm origin-left z-50"
+          style={{ scaleX }}
+        />
+        
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-3 group">

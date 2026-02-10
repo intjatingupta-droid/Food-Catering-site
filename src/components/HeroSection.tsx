@@ -1,33 +1,105 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import {
-  FloatingChili,
-  FloatingBasil,
-  FloatingTomato,
-  FloatingMint,
-  FloatingLemon,
-  FloatingCoriander,
-  DecorativeRing,
-} from "@/components/FloatingElements";
-import { ArrowRight, Star, Phone } from "lucide-react";
+import { DecorativeRing } from "@/components/FloatingElements";
+import { ArrowRight, Star, Phone, Award, Users, Sparkles } from "lucide-react";
+import { useRef } from "react";
 
 // Food dish images
 import dishButterChicken from "@/assets/dish-butter-chicken.jpg";
 import dishBiryani from "@/assets/dish-biryani.jpg";
 import dishPaneerTikka from "@/assets/dish-paneer-tikka.jpg";
+import bowlMain from "@/assets/hero-main.png";
+import pokeBowl from "@/assets/minibowl.png";
+import veganPlate from "@/assets/minibowl2.png";
+import premiumDish from "@/assets/minibowl3.png";
+
+// PNG elements
+import tomatoPng from "@/assets/vibrant-tomato-slices-with-juicy-red-interior-hovering-in-the-air-png.png";
+import bellPepperPng from "@/assets/sliced-green-bell-pepper-vegetable-on-transparent-background-free-png.png";
+import carrotPng from "@/assets/pngtree-single-fresh-orange-carrot-vegetable-png-image_14022325-removebg-preview.png";
+import veggiePng from "@/assets/image-removebg-preview.png";
 
 const HeroSection = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+
+  // Parallax effects
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden bg-background">
-      {/* Floating Food Elements - Large and Visible */}
-      <FloatingChili className="top-20 left-8 z-20" size="lg" delay={0} />
-      <FloatingBasil className="top-32 right-12 z-20" size="xl" delay={0.5} />
-      <FloatingTomato className="bottom-40 left-16 z-20" size="lg" delay={1} />
-      <FloatingMint className="top-1/2 left-4 z-20" size="md" delay={1.5} />
-      <FloatingLemon className="top-24 left-1/3 z-20" size="lg" delay={0} rotate />
-      <FloatingCoriander className="bottom-24 right-8 z-20" size="lg" delay={2} />
-      <FloatingChili className="bottom-1/3 right-1/4 z-20" size="md" delay={0.8} />
-      <FloatingBasil className="top-3/4 left-1/4 z-20" size="md" delay={1.2} />
+    <section ref={ref} id="home" className="relative min-h-screen overflow-hidden bg-background pt-20">
+      {/* Floating PNG Elements - spread across entire page */}
+      <motion.div 
+        className="absolute top-[35%] left-[5%] w-16 h-16 md:w-20 md:h-20 z-50 opacity-25"
+        animate={{ 
+          y: [0, -20, 0],
+          rotate: [0, 15, -15, 0],
+          x: [0, 10, 0]
+        }}
+        transition={{ duration: 6, repeat: Infinity }}
+      >
+        <img src={tomatoPng} alt="" className="w-full h-full object-contain drop-shadow-lg" />
+      </motion.div>
+      
+      <motion.div 
+        className="absolute top-[25%] left-[8%] w-14 h-14 md:w-18 md:h-18 z-20 opacity-15"
+        animate={{ 
+          y: [0, 15, 0],
+          rotate: [0, -20, 20, 0]
+        }}
+        transition={{ duration: 7, repeat: Infinity, delay: 1 }}
+      >
+        <img src={carrotPng} alt="" className="w-full h-full object-contain drop-shadow-lg" />
+      </motion.div>
+      
+      <motion.div 
+        className="absolute bottom-[15%] left-[3%] w-12 h-12 md:w-16 md:h-16 z-20 opacity-20"
+        animate={{ 
+          y: [0, -18, 0],
+          rotate: [0, 25, -25, 0]
+        }}
+        transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
+      >
+        <img src={bellPepperPng} alt="" className="w-full h-full object-contain drop-shadow-lg" />
+      </motion.div>
+      
+      <motion.div 
+        className="absolute top-[45%] left-[12%] w-10 h-10 md:w-14 md:h-14 z-15 opacity-18"
+        animate={{ 
+          y: [0, 12, 0],
+          rotate: [0, -15, 15, 0]
+        }}
+        transition={{ duration: 8, repeat: Infinity, delay: 2 }}
+      >
+        <img src={veggiePng} alt="" className="w-full h-full object-contain drop-shadow-lg" />
+      </motion.div>
+
+      <motion.div 
+        className="absolute bottom-[10%] right-[8%] w-14 h-14 md:w-18 md:h-18 z-20 opacity-20"
+        animate={{ 
+          y: [0, -15, 0],
+          rotate: [0, 18, -18, 0]
+        }}
+        transition={{ duration: 6.5, repeat: Infinity, delay: 1.5 }}
+      >
+        <img src={tomatoPng} alt="" className="w-full h-full object-contain drop-shadow-lg" />
+      </motion.div>
+
+      <motion.div 
+        className="absolute bottom-[25%] right-[3%] w-12 h-12 md:w-16 md:h-16 z-50 opacity-16"
+        animate={{ 
+          y: [0, 14, 0],
+          rotate: [0, -18, 18, 0]
+        }}
+        transition={{ duration: 7, repeat: Infinity, delay: 0.8 }}
+      >
+        <img src={bellPepperPng} alt="" className="w-full h-full object-contain drop-shadow-lg" />
+      </motion.div>
       
       {/* Decorative Rings */}
       <DecorativeRing className="w-[600px] h-[600px] -top-40 -right-40" />
@@ -58,15 +130,62 @@ const HeroSection = () => {
 
             {/* Main Heading */}
             <motion.h1
-              className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight overflow-visible pb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              Crafting{" "}
-              <span className="text-gradient-warm">Unforgettable</span>
+              <motion.span
+                className="inline-block"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                Crafting{" "}
+              </motion.span>
+              <motion.span
+                className="text-gradient-warm inline-block overflow-visible"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: 0.5,
+                  type: "spring",
+                  stiffness: 100
+                }}
+              >
+                <motion.span
+                  className="inline-block"
+                  animate={{ 
+                    textShadow: [
+                      "0 0 20px rgba(255, 107, 53, 0.3)",
+                      "0 0 40px rgba(255, 107, 53, 0.5)",
+                      "0 0 20px rgba(255, 107, 53, 0.3)"
+                    ]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  Unforgettable
+                </motion.span>
+              </motion.span>
               <br />
-              Culinary Moments
+              <motion.span
+                className="inline-block"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+              >
+                Culinary{" "}
+              </motion.span>
+              <motion.span
+                className="inline-block"
+                initial={{ opacity: 0, rotateX: 90 }}
+                animate={{ opacity: 1, rotateX: 0 }}
+                transition={{ duration: 0.8, delay: 0.9 }}
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                Moments
+              </motion.span>
             </motion.h1>
 
             {/* Description */}
@@ -120,113 +239,135 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Side - Food Images Collage */}
+          {/* Right Side - Professional Food Showcase with Overlays */}
           <motion.div
-            className="relative z-10 h-[500px] lg:h-[700px]"
+            className="relative z-10 h-[600px] lg:h-[700px]"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            {/* Main Large Image */}
-            <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-elegant border-8 border-card z-10"
-              animate={{
-                y: [0, -15, 0],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              <img
-                src={dishButterChicken}
-                alt="Delicious Butter Chicken"
-                className="w-full h-full object-cover"
+            {/* Curved Decorative Lines */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 700">
+              <motion.path
+                d="M 100 200 Q 300 150 500 250"
+                stroke="#FF6B35"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 0.3 }}
+                transition={{ duration: 2, delay: 0.5 }}
               />
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent" />
+              <motion.path
+                d="M 150 500 Q 350 450 550 520"
+                stroke="#E63946"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 0.3 }}
+                transition={{ duration: 2, delay: 0.7 }}
+              />
+            </svg>
+
+            {/* Main Featured Dish - Large Circle with Overlay */}
+            <motion.div
+              className="absolute top-[8%] right-[5%] w-[380px] h-[380px] md:w-[450px] md:h-[450px] lg:w-[520px] lg:h-[520px] rounded-full overflow-hidden shadow-2xl z-20 group"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1, rotate: 360 }}
+              transition={{ 
+                scale: { type: "spring", stiffness: 80, delay: 0.3 },
+                rotate: { duration: 30, repeat: Infinity, ease: "linear" }
+              }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="relative w-full h-full">
+                <img
+                  src={bowlMain}
+                  alt="Featured Dish"
+                  className="w-full h-full object-cover"
+                />
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+              </div>
             </motion.div>
 
-            {/* Secondary Image - Top Right */}
+            {/* Rotating Circle Border */}
             <motion.div
-              className="absolute top-8 right-4 md:top-12 md:right-8 w-36 h-36 md:w-44 md:h-44 rounded-2xl overflow-hidden shadow-elegant rotate-6 z-20"
-              animate={{
-                y: [0, -10, 0],
-                rotate: [6, 8, 6],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.5,
-              }}
-            >
-              <img
-                src={dishBiryani}
-                alt="Aromatic Biryani"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
+              className="absolute top-[8%] right-[5%] w-[380px] h-[380px] md:w-[450px] md:h-[450px] lg:w-[520px] lg:h-[520px] rounded-full border-2 border-primary/20"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            />
 
-            {/* Tertiary Image - Bottom Left */}
+            {/* Small Circular Image Cards with Overlays */}
+            {/* Top Right - Poke Bowl */}
             <motion.div
-              className="absolute bottom-12 left-0 md:bottom-16 md:left-4 w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-elegant -rotate-6 z-20"
-              animate={{
-                y: [0, -12, 0],
-                rotate: [-6, -8, -6],
-              }}
-              transition={{
-                duration: 7,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1,
-              }}
+              className="absolute top-[2%] right-[25%] w-32 h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full overflow-hidden shadow-xl z-30 border-4 border-white group cursor-pointer"
+              initial={{ scale: 0, x: 50 }}
+              animate={{ scale: 1, x: 0 }}
+              transition={{ type: "spring", delay: 1 }}
+              whileHover={{ scale: 1.1, y: -5 }}
             >
-              <img
-                src={dishPaneerTikka}
-                alt="Paneer Tikka"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-
-            {/* Decorative Badge */}
-            <motion.div
-              className="absolute bottom-24 right-0 md:bottom-32 md:right-8 bg-card rounded-2xl shadow-elegant p-4 md:p-6 z-30"
-              animate={{
-                y: [0, -8, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-cta flex items-center justify-center">
-                  <span className="text-2xl">👨‍🍳</span>
-                </div>
-                <div>
-                  <p className="font-display font-bold text-foreground">50+ Expert Chefs</p>
-                  <p className="font-body text-sm text-muted-foreground">Ready to serve</p>
+              <div className="relative w-full h-full">
+                <img src={pokeBowl} alt="Poke Bowl" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Award className="w-8 h-8 text-white" />
                 </div>
               </div>
             </motion.div>
 
-            {/* Floating Price Tag */}
+            {/* Bottom Left - Vegan Plate */}
             <motion.div
-              className="absolute top-4 left-4 md:top-8 md:left-8 bg-primary text-primary-foreground rounded-xl px-4 py-2 shadow-warm z-30"
-              animate={{
-                scale: [1, 1.05, 1],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+              className="absolute bottom-[12%] left-[8%] w-36 h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 rounded-full overflow-hidden shadow-xl z-30 border-4 border-white group cursor-pointer"
+              initial={{ scale: 0, x: -50 }}
+              animate={{ scale: 1, x: 0 }}
+              transition={{ type: "spring", delay: 1.2 }}
+              whileHover={{ scale: 1.1, y: -5 }}
             >
-              <p className="font-display font-bold text-lg">From ₹599</p>
-              <p className="font-body text-xs opacity-90">per plate</p>
+              <div className="relative w-full h-full">
+                <img src={veganPlate} alt="Vegan Plate" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-green-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="bg-white/95 px-3 py-1 rounded-full text-xs font-bold text-foreground">Vegan</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Left Center - Premium Dish */}
+            <motion.div
+              className="absolute top-[38%] left-[3%] w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full overflow-hidden shadow-xl z-30 border-4 border-white group cursor-pointer"
+              initial={{ scale: 0, x: -50 }}
+              animate={{ scale: 1, x: 0 }}
+              transition={{ type: "spring", delay: 1.4 }}
+              whileHover={{ scale: 1.1, rotate: 5 }}
+            >
+              <div className="relative w-full h-full">
+                <img src={premiumDish} alt="Premium" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-orange-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Star className="w-6 h-6 text-white fill-white" />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Floating Info Cards */}
+            <motion.div
+              className="absolute top-[15%] left-[5%] bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-4 z-40"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.5 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-gradient-cta flex items-center justify-center">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <div className="font-display text-2xl font-bold text-foreground">5000+</div>
+                  <p className="text-xs text-muted-foreground">Happy Clients</p>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </div>

@@ -25,8 +25,8 @@ const sizeMap = {
 };
 
 const floatAnimation = (delay: number = 0, duration: number = 6) => ({
-  y: [0, -25, 0],
-  rotate: [0, 5, -5, 0],
+  y: [0, -30, 0],
+  x: [0, 10, 0],
   transition: {
     duration,
     repeat: Infinity,
@@ -45,6 +45,32 @@ const rotateAnimation = (delay: number = 0, duration: number = 20) => ({
   } satisfies Transition,
 });
 
+const floatAndRotateAnimation = (delay: number = 0, floatDuration: number = 6, rotateDuration: number = 15) => ({
+  y: [0, -30, 0],
+  x: [0, 15, 0],
+  rotate: [0, 360],
+  transition: {
+    y: {
+      duration: floatDuration,
+      repeat: Infinity,
+      ease: "easeInOut" as const,
+      delay,
+    },
+    x: {
+      duration: floatDuration,
+      repeat: Infinity,
+      ease: "easeInOut" as const,
+      delay,
+    },
+    rotate: {
+      duration: rotateDuration,
+      repeat: Infinity,
+      ease: "linear" as const,
+      delay,
+    },
+  } satisfies Transition,
+});
+
 export const FloatingChili = ({ 
   className = "", 
   size = "md", 
@@ -55,8 +81,8 @@ export const FloatingChili = ({
   <motion.img
     src={floatingChili}
     alt=""
-    className={`absolute object-contain pointer-events-none drop-shadow-lg ${sizeMap[size]} ${className}`}
-    animate={rotate ? rotateAnimation(delay, duration) : floatAnimation(delay, duration)}
+    className={`absolute object-contain pointer-events-none drop-shadow-2xl ${sizeMap[size]} ${className}`}
+    animate={rotate ? floatAndRotateAnimation(delay, duration, 20) : floatAnimation(delay, duration)}
     aria-hidden="true"
   />
 );
@@ -65,13 +91,14 @@ export const FloatingBasil = ({
   className = "", 
   size = "md", 
   delay = 0, 
-  duration = 7 
+  duration = 7,
+  rotate = false 
 }: FloatingElementProps) => (
   <motion.img
     src={floatingBasil}
     alt=""
-    className={`absolute object-contain pointer-events-none drop-shadow-lg ${sizeMap[size]} ${className}`}
-    animate={floatAnimation(delay, duration)}
+    className={`absolute object-contain pointer-events-none drop-shadow-2xl ${sizeMap[size]} ${className}`}
+    animate={rotate ? floatAndRotateAnimation(delay, duration, 25) : floatAnimation(delay, duration)}
     aria-hidden="true"
   />
 );
@@ -80,13 +107,14 @@ export const FloatingTomato = ({
   className = "", 
   size = "md", 
   delay = 0, 
-  duration = 5 
+  duration = 5,
+  rotate = true 
 }: FloatingElementProps) => (
   <motion.img
     src={floatingTomato}
     alt=""
-    className={`absolute object-contain pointer-events-none drop-shadow-lg ${sizeMap[size]} ${className}`}
-    animate={floatAnimation(delay, duration)}
+    className={`absolute object-contain pointer-events-none drop-shadow-2xl ${sizeMap[size]} ${className}`}
+    animate={rotate ? floatAndRotateAnimation(delay, duration, 18) : floatAnimation(delay, duration)}
     aria-hidden="true"
   />
 );
@@ -95,13 +123,14 @@ export const FloatingCoriander = ({
   className = "", 
   size = "md", 
   delay = 0, 
-  duration = 8 
+  duration = 8,
+  rotate = false 
 }: FloatingElementProps) => (
   <motion.img
     src={floatingCoriander}
     alt=""
-    className={`absolute object-contain pointer-events-none drop-shadow-lg ${sizeMap[size]} ${className}`}
-    animate={floatAnimation(delay, duration)}
+    className={`absolute object-contain pointer-events-none drop-shadow-2xl ${sizeMap[size]} ${className}`}
+    animate={rotate ? floatAndRotateAnimation(delay, duration, 22) : floatAnimation(delay, duration)}
     aria-hidden="true"
   />
 );
@@ -110,13 +139,14 @@ export const FloatingTurmeric = ({
   className = "", 
   size = "md", 
   delay = 0, 
-  duration = 6 
+  duration = 6,
+  rotate = false 
 }: FloatingElementProps) => (
   <motion.img
     src={floatingTurmeric}
     alt=""
-    className={`absolute object-contain pointer-events-none drop-shadow-lg ${sizeMap[size]} ${className}`}
-    animate={floatAnimation(delay, duration)}
+    className={`absolute object-contain pointer-events-none drop-shadow-2xl ${sizeMap[size]} ${className}`}
+    animate={rotate ? floatAndRotateAnimation(delay, duration, 20) : floatAnimation(delay, duration)}
     aria-hidden="true"
   />
 );
@@ -125,13 +155,14 @@ export const FloatingMint = ({
   className = "", 
   size = "md", 
   delay = 0, 
-  duration = 7 
+  duration = 7,
+  rotate = false 
 }: FloatingElementProps) => (
   <motion.img
     src={floatingMint}
     alt=""
-    className={`absolute object-contain pointer-events-none drop-shadow-lg ${sizeMap[size]} ${className}`}
-    animate={floatAnimation(delay, duration)}
+    className={`absolute object-contain pointer-events-none drop-shadow-2xl ${sizeMap[size]} ${className}`}
+    animate={rotate ? floatAndRotateAnimation(delay, duration, 24) : floatAnimation(delay, duration)}
     aria-hidden="true"
   />
 );
@@ -140,14 +171,14 @@ export const FloatingLemon = ({
   className = "", 
   size = "md", 
   delay = 0, 
-  duration = 15,
+  duration = 6,
   rotate = true 
 }: FloatingElementProps) => (
   <motion.img
     src={floatingLemon}
     alt=""
-    className={`absolute object-contain pointer-events-none drop-shadow-lg ${sizeMap[size]} ${className}`}
-    animate={rotate ? rotateAnimation(delay, duration) : floatAnimation(delay, duration)}
+    className={`absolute object-contain pointer-events-none drop-shadow-2xl ${sizeMap[size]} ${className}`}
+    animate={rotate ? floatAndRotateAnimation(delay, duration, 15) : floatAnimation(delay, duration)}
     aria-hidden="true"
   />
 );
