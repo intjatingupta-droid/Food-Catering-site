@@ -34,8 +34,9 @@ const HeroSection = () => {
   return (
     <section ref={ref} id="home" className="relative min-h-screen overflow-hidden bg-background pt-16 lg:pt-20">
       {/* Floating PNG Elements - hidden on mobile, visible on larger screens */}
+      {/* Tomato - far bottom left corner */}
       <motion.div 
-        className="hidden lg:block absolute top-[35%] left-[5%] w-16 h-16 md:w-20 md:h-20 z-50 opacity-25"
+        className="hidden lg:block absolute bottom-[5%] left-[1%] w-16 h-16 md:w-20 md:h-20 z-5 opacity-25"
         animate={{ 
           y: [0, -20, 0],
           rotate: [0, 15, -15, 0],
@@ -46,8 +47,9 @@ const HeroSection = () => {
         <img src={tomatoPng} alt="" className="w-full h-full object-contain drop-shadow-lg" />
       </motion.div>
       
+      {/* Carrot - top left corner */}
       <motion.div 
-        className="hidden lg:block absolute top-[25%] left-[8%] w-14 h-14 md:w-18 md:h-18 z-20 opacity-15"
+        className="hidden lg:block absolute top-[5%] left-[1%] w-14 h-14 md:w-18 md:h-18 z-5 opacity-15"
         animate={{ 
           y: [0, 15, 0],
           rotate: [0, -20, 20, 0]
@@ -57,8 +59,9 @@ const HeroSection = () => {
         <img src={carrotPng} alt="" className="w-full h-full object-contain drop-shadow-lg" />
       </motion.div>
       
+      {/* Bell Pepper - middle bottom left */}
       <motion.div 
-        className="hidden lg:block absolute bottom-[15%] left-[3%] w-12 h-12 md:w-16 md:h-16 z-20 opacity-20"
+        className="hidden lg:block absolute bottom-[30%] left-[1%] w-12 h-12 md:w-16 md:h-16 z-5 opacity-20"
         animate={{ 
           y: [0, -18, 0],
           rotate: [0, 25, -25, 0]
@@ -68,8 +71,9 @@ const HeroSection = () => {
         <img src={bellPepperPng} alt="" className="w-full h-full object-contain drop-shadow-lg" />
       </motion.div>
       
+      {/* Veggie - middle left */}
       <motion.div 
-        className="hidden lg:block absolute top-[45%] left-[12%] w-10 h-10 md:w-14 md:h-14 z-15 opacity-18"
+        className="hidden lg:block absolute top-[50%] left-[1%] w-10 h-10 md:w-14 md:h-14 z-5 opacity-18"
         animate={{ 
           y: [0, 12, 0],
           rotate: [0, -15, 15, 0]
@@ -182,7 +186,7 @@ const HeroSection = () => {
             >
               {[
                 { value: "15+", label: "Years Experience" },
-                { value: "5000+", label: "Events Catered" },
+                { value: "500+", label: "Events Catered" },
                 { value: "4.9", label: "Customer Rating", icon: Star },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
@@ -259,7 +263,7 @@ const HeroSection = () => {
             {/* Small Circular Image Cards with Overlays - HIDDEN ON MOBILE */}
             {/* Top Right - Poke Bowl */}
             <motion.div
-              className="hidden lg:block absolute top-[2%] right-[25%] w-40 h-40 rounded-full overflow-hidden shadow-xl z-30 border-4 border-white group cursor-pointer"
+              className="hidden lg:block absolute top-[2%] right-[25%] w-40 h-40 rounded-full overflow-hidden shadow-xl z-30 border-4 border-white group cursor-pointer opacity-0"
               initial={{ scale: 0, x: 50 }}
               animate={{ scale: 1, x: 0 }}
               transition={{ type: "spring", delay: 1 }}
@@ -321,7 +325,7 @@ const HeroSection = () => {
                   <Users className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <div className="font-display text-2xl font-bold text-foreground">5000+</div>
+                  <div className="font-display text-2xl font-bold text-foreground">500+</div>
                   <p className="text-xs text-muted-foreground">Happy Clients</p>
                 </div>
               </div>
